@@ -1,13 +1,13 @@
 <h2>sign up</h2>
 
-<form action="/auth/login" method="POST">
+<form action="/auth/signup" method="POST">
 	<div class="row">
 		<div class="input-feild col s12 m6">
 			<label for="firstname">First Name</label>
 			<input type="text" id="firstname" name="firstname" class="validate">
 		</div>
 		<div class="input-feild col s12 m6">
-			<label for="lastname">Last name</label>
+			<label for="lastname">Last Name</label>
 			<input type="text" id="lastname" name="lastname" class="validate">
 		</div>
 	</div>
@@ -27,9 +27,9 @@
 			<input type="date" id="dob" name="dob" class="validate">
 		</div>
 		<div class="input-feild col s12 m6">
-			<label for="image">image Url</label>
+			<label for="image">Image Url</label>
 			<input type="url" id="image" name="url" class="validate">
 		</div>
 	</div>
-	<a class="waves-effect waves-light btn">Submit</a>
+	<button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
 </form>
