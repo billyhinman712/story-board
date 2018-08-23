@@ -1,0 +1,19 @@
+<% if(alerts.success){ %>
+	<% alerts.success.forEach(function(msg){ %>
+		<div class="row">
+			<div class="card lime accent-3">
+				<h4 class="center-align"><%= msg %></div>
+			</div>
+		</div>
+	<% }); %>
+<% } %>
+
+<% if(alerts.error){ %>
+	<% alerts.error.forEach(function(msg){ %>
+		<div class="row">
+			<div class="card purple accent-2">
+				<h4 class="center-align"><%= msg %></h4>
+			</div>
+		</div>
+	<% }); %>
+<% } %>

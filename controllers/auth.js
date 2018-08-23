@@ -1,6 +1,6 @@
 //require needed modules
 var express = require('express');
-var passport = require('./config/passportConfig');
+var passport = require('../config/passportConfig');
 
 //include models
 var db = require('../models');
@@ -13,7 +13,7 @@ router.get('/login', function(req, res){
 	res.render('auth/login');
 });
 
-router.post('/login', passport.authenticate('/local', {
+router.post('/login', passport.authenticate('local', {
 	successRedirect: '/profile',
 	successFlash: 'login successful',
 	failureRedirct: '/auth/login',
@@ -41,17 +41,19 @@ router.post('/signup', function(req, res){
 			})(req, res);
 		}
 		else{//user messed up already have login
-			//send user error message
+			req.flash('error', 'Please login');
 			res.redirect('/auth/login');
 		}
 	}).catch(function(err){
-		console.log(err);
-		res.send(err);
+		req.flash('error', err.message);
+		res.redirect('/auth/signup');
 	});
 });
 
 router.get('/logout', function(req, res){
-	res.send('logout page');
+	req.logout();
+	req.flash('success', 'Successfully logged out!');
+	res.redirect('/');
 });
 
 module.exports = router;

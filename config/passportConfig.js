@@ -1,6 +1,6 @@
 //require needed modules
 var passport = require('passport');
-var passportLocalStratagy = require('passport-local').Stratagy;
+var passportLocalStratagy = require('passport-local').Strategy;
 
 //declare variables
 var db = require('../models');
@@ -23,11 +23,11 @@ passport.use(new passportLocalStratagy({
 	usernameField: 'email',
 	passwordField: 'password'
 }, function(email, password, callback){
-	db.user,findOne({
+	db.user.findOne({
 		where: {email: email}
 	}).then(function(foundUser){
 		if(!foundUser || !foundUser.isValidPassword(password)){
-			callback('Invalid user or password', null);
+			callback(null, null);
 		}
 		else{
 			callback(null, foundUser);
@@ -37,4 +37,4 @@ passport.use(new passportLocalStratagy({
 	});
 }));
 
-module.exports = passports;
+module.exports = passport;
