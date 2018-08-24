@@ -53,7 +53,7 @@ git clone <repo_link> <new_name>
 createdb <new_db_name>
 ```
 
-#### 3. `Open config.json` and change the following
+#### 3. Open `config.json` and change the following
 
 * Change database name to what you created in step 2
 * Check username/password for your local enviornment
