@@ -22,7 +22,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     dob: DataTypes.DATE,
-    admin: DataTypes.BOOLEAN,
     facebookId: DataTypes.STRING,
     facebookToken: DataTypes.STRING,
     image: {

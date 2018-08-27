@@ -1,8 +1,8 @@
 {
   "name": "auth-boiler",
   "version": "1.0.0",
-  "description": "Boiler plate for future use",
-  "repository": "https://github.com/billyhinman712/auth-boiler",
+  "description": "A place for new Authors to get help on their work",
+  "repository": "https://github.com/billyhinman712/story-board",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
