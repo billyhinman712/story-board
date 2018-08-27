@@ -56,12 +56,18 @@ router.get('/logout', function(req, res){
 	res.redirect('/');
 });
 
-router.get('/facebook', function(req, res){
-	res.send('FB login route stub');
-});
+/* oauth routes */
+//this calls the passport-facebook stratagy
+router.get('/facebook', passport.authenticate('facebook', {
+	scope: ['public_profile', 'email']
+}));
 
-router.get('/callback/facebook', function(req, res){
-	res.send('stub');
-});
+//handle the response from facebook
+router.get('/callback/facebook', passport.authenticate('facebook', {
+	successRedirect: '/profile',
+	successFlash: 'facebook login successful',
+	failureRedirct: '/auth/login',
+	failureFlash: 'Facebook login failed'
+}));
 
 module.exports = router;
