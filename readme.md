@@ -35,3 +35,5 @@
 | GET | /auth/logout | controllers/auth.js | logout; Redirect Home |
 | GET | /facebook | controllers/auth.js | calls passport-facebook strategy |
 | GET | /callback/facebook | controllers/auth.js | handles response from facebook |
+| GET | /articles | controllers/articles.js | article list |
+| GET | /articles/:id | controllers/articles.js | shows article |
