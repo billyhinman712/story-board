@@ -56,4 +56,12 @@ router.get('/logout', function(req, res){
 	res.redirect('/');
 });
 
+router.get('/facebook', function(req, res){
+	res.send('FB login route stub');
+});
+
+router.get('/callback/facebook', function(req, res){
+	res.send('stub');
+});
+
 module.exports = router;
