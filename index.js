@@ -42,5 +42,9 @@ app.get('/', function(req, res){
 	res.render('home');
 });
 
+app.get('/random', function(req, res){
+	res.send('generates random quote or topic');
+});
+
 //listen to port 3000
 app.listen(3000);

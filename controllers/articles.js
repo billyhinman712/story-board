@@ -12,8 +12,16 @@ router.get('/', function(req, res){
 	res.send('article list page');
 });
 
+router.get('/new', function(req, res){
+	res.send('this is the new story form');
+});
+
 router.get('/:id', function(req, res){
 	res.send('artile id page');
+});
+
+router.post('/', function(req, res){
+	res.send('post route for articles');
 });
 
 module.exports = router;

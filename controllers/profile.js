@@ -12,4 +12,8 @@ router.get('/', loggedIn, function(req, res){
 	res.render('auth/profile/index');
 });
 
+router.get('/', function(req, res){
+	res.send('shows users stories');
+});
+
 module.exports = router;
