@@ -1,0 +1,14 @@
+<div class="container">
+	<h2> My Stories</h2>
+	<br>
+	<hr>
+	<div class="container">
+		<% articles.forEach(function(a){ %>
+			<a href="/articles/<%= a.id %>">
+				<%= a.title %>
+			</a>
+			<br>
+			<hr>
+		<% }); %>
+	</div>
+</div>

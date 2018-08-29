@@ -1,5 +1,6 @@
 //require needed modules
 var express = require('express');
+var db = require('../models');
 
 //declare a new route
 var router = express.Router();
@@ -17,7 +18,14 @@ router.get('/', function(req, res){
 });
 
 router.get('/articles', function(req, res){
-	res.send('my articles page');
+	db.article.findAll().then(function(allArticles){
+		db.user.findAll().then(function(allUsers){
+			res.render('profile/list', {articles: allArticles, users: allUsers});
+		});
+	}).catch(function(err){
+		console.log(err);
+		res.render('error');
+	});
 });
 
 module.exports = router;
