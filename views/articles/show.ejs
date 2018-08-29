@@ -1,8 +1,29 @@
 <div class='row'>
-	<div class='col s2'>
-		<p>Search tags</p>
+	<div class='col s4 light-green accent-3'>
+		<h5>Search tags</h5>
+		<input type='text' placeholder='tags'>
+		<input type="submit" value="Search" class="btn">
+		<hr>
+		<ul>
+		<% if(article && article.length > 0){ %>
+		<% article.forEach(function(t){ %>
+			<a href="/tags/<%=t.id%>">
+				#<%=t.name%>
+			</a>
+		<% }); %>
+	<% } else { %>
+			<p>No tags yet</p>
+		<% } %>
+		</ul>
 	</div>
-	<div class='col s10'>
-		<h3> article show page </h3>
+	<div class='col s8'>
+		<div class='container'>
+			<h3> <%= article.name %> </h3>
+			<br>
+			<h4> <%= article.user.firstname %> <%= article.user.lastname %></h4>
+		</div>
+		<div class='container'>
+			<p> <%= artile.content %> </p>
+		</div>
 	</div>
 </div>
