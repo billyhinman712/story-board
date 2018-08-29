@@ -11,7 +11,9 @@ var router = express.Router();
 
 router.get('/', function(req, res){
 	db.article.findAll().then(function(allArticles){
-		res.render('articles/list', {articles: allArticles});
+		db.user.findAll().then(function(allUsers){
+			res.render('articles/list', {articles: allArticles, users: allUsers});
+		});
 	}).catch(function(err){
 		console.log(err);
 		res.render('error');
@@ -19,7 +21,13 @@ router.get('/', function(req, res){
 });
 
 router.get('/new', function(req, res){
-	res.send('this is the new story form');
+	console.log(req.url);
+	db.user.findAll().then(function(allUsers){
+		res.render('articles/new', {users: allUsers});
+	}).catch(function(err){
+		console.log(err);
+		res.render('error');
+	});
 });
 
 router.get('/:id', function(req, res){

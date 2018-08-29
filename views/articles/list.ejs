@@ -1,4 +1,15 @@
 <div class="container">
 	<h2> Recently Submited Stories</h2>
-	
+	<br>
+	<hr>
+	<div class="container">
+		<% articles.forEach(function(a){ %>
+			<a href="/articles/<%= a.id %>">
+				<%= a.title %>
+			</a>
+			<br>
+			<h4><%= a.user.name %></h4>
+			<hr>
+		<% }); %>
+	</div>
 </div>
