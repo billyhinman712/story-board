@@ -46,5 +46,10 @@ app.get('/random', function(req, res){
 	res.send('generates random quote or topic');
 });
 
+app.get('*', function(req, res){
+	console.log('wildcard route');
+	res.render('error');
+});
+
 //listen to port 3000
 app.listen(3000);
