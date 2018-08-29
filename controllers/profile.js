@@ -16,4 +16,8 @@ router.get('/', function(req, res){
 	res.send('shows users stories');
 });
 
+router.get('/articles', function(req, res){
+	res.send('my articles page');
+});
+
 module.exports = router;
