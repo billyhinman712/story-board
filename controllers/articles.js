@@ -31,7 +31,24 @@ router.get('/new', function(req, res){
 });
 
 router.get('/:id', function(req, res){
-	res.send('artile id page');
+	db.article.findOne({
+		where: {id: req.params.id},
+		include: [db.user, db.comment, db.tag]
+	}).then(function(foundArticle){
+		db.user.findAll().then(function(allUsers){
+			res.render('articles/show', {article: foundArticle, users: allUsers});
+		}).catch(function(err){
+			console.log(err);
+			res.render('error');
+		});
+	}).catch(function(err){
+		console.log(err);
+		res.render('error');
+	});
+});
+
+router.get('/:id/edit', function(req, res){
+	res.send('article edit form');
 });
 
 router.post('/', function(req, res){
