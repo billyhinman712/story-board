@@ -5,11 +5,11 @@
 		<input type="submit" value="Search" class="btn">
 		<hr>
 		<ul>
-		<% if(article && article.length > 0){ %>
-		<% article.forEach(function(t){ %>
-			<a href="/tags/<%=t.id%>">
+		<% if(article.tags && article.tags.length > 0){ %>
+		<% article.tags.forEach(function(t){ %>
+			<li>
 				#<%=t.name%>
-			</a>
+			</li>
 		<% }); %>
 	<% } else { %>
 			<p>No tags yet</p>
@@ -18,12 +18,12 @@
 	</div>
 	<div class='col s8'>
 		<div class='container'>
-			<h3> <%= article.name %> </h3>
+			<h3> <%= article.title %> </h3>
 			<br>
 			<h4> <%= article.user.firstname %> <%= article.user.lastname %></h4>
 		</div>
 		<div class='container'>
-			<p> <%= artile.content %> </p>
+			<p> <%= article.content %> </p>
 		</div>
 	</div>
 </div>
