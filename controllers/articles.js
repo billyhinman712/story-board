@@ -48,7 +48,19 @@ router.get('/:id', function(req, res){
 });
 
 router.get('/:id/edit', function(req, res){
-	res.send('article edit form');
+	db.article.findOne({
+		where: {id: req.params.id},
+	}).then(function(foundArticle){
+		db.user.findAll().then(function(allUsers){
+			res.render('articles/edit', {article: foundArticle, users: allUsers});
+		}).catch(function(err){
+			console.log(err);
+			res.render('error');
+		});
+	}).catch(function(err){
+		console.log(err);
+		res.render('error');
+	});
 });
 
 router.post('/', function(req, res){
