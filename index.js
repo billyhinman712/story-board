@@ -43,7 +43,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/random', function(req, res){
-	res.send('generates random quote or topic');
+	res.render('random');
 });
 
 app.get('*', function(req, res){
