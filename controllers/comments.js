@@ -8,7 +8,7 @@ router.post('/', function(req, res){
 		res.redirect('/articles/' + req.body.articleId);
 	}).catch(function(err){
 		console.log('errrrrr', err)
-		res.send('broken');
+		res.render('error');
 	});
 });
 

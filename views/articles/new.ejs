@@ -7,9 +7,9 @@
 		<select name="userId">
 			<option value="" disabled selected>Choose Your name below</option>
 			<% if(users){ %>
-				<% users.forEach(function(a){ %>
-				<option value="<%= a.id %>">
-					<%= a.name %>
+				<% users.forEach(function(u){ %>
+				<option value="<%= u.id %>">
+					<%= u.name %>
 				</option>
 				<% }); %>
 			<% } %>

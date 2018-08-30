@@ -64,7 +64,13 @@ router.get('/:id/edit', function(req, res){
 });
 
 router.post('/', function(req, res){
-	res.send('post route for articles');
+	console.log('BDY', req.body);
+	db.article.create(req.body).then(function(createdArticle){
+		res.redirect('/articles');
+	}).catch(function(err){
+		console.log('errrrrr', err)
+		res.render('error');
+	});
 });
 
 module.exports = router;
