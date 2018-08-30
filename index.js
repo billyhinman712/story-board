@@ -24,6 +24,7 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.static(__dirname + '/public/'));
 
 //custom middleware - FUN!
 app.use(function(req, res, next){

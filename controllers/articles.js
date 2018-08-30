@@ -73,4 +73,8 @@ router.post('/', function(req, res){
 	});
 });
 
+router.put('/', function(req, res){
+	res.send('put route');
+});
+
 module.exports = router;
