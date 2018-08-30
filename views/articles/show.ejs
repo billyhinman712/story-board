@@ -51,7 +51,7 @@
 			<label>Auther</label>	<% if(users){ %>
 					<% users.forEach(function(a){ %>
 					<option value="<%= a.id %>">
-						<%= a.name %>
+						<%= a.firstname %> <%= a.lastname %>
 					</option>
 					<% }); %>
 				<% } %>

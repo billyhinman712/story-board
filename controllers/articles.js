@@ -66,7 +66,7 @@ router.get('/:id/edit', function(req, res){
 router.post('/', function(req, res){
 	console.log('BDY', req.body);
 	db.article.create(req.body).then(function(createdArticle){
-		res.redirect('/articles');
+		res.redirect('/profile/articles');
 	}).catch(function(err){
 		console.log('errrrrr', err)
 		res.render('error');
@@ -74,7 +74,30 @@ router.post('/', function(req, res){
 });
 
 router.put('/', function(req, res){
-	res.send('put route');
+	res.send(req.body);
 });
+
+router.delete('/:id', function(req, res){
+	db.article.findOne({
+		where: {id: req.params.id},
+		include: [db.comment]
+	}).then(function(foundArticle){
+		async.forEach(foundArticle.tags, function(a, done){
+			foundArticle.removeTag(a).then(function(){
+				done();
+			});
+		}, function(){
+			db.article.destroy({
+				where: {id: req.params.id}
+			}).then(function(){
+				res.send('success');
+			}).catch(function(err){
+				res.status(500).send('oh noo!');
+			});
+		});
+	}).catch(function(err){
+		res.status(500).send('oh noo!');
+	});
+})
 
 module.exports = router;

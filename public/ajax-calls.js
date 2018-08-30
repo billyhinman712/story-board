@@ -12,7 +12,7 @@ $(document).ready(function(){
 			method: 'DELETE'
 		}).done(function(res){
 			// console.log('success', res);
-			window.location = '/' + url.split('/')[1];
+			window.location = '/profile/articles';
 		}).fail(function(err){
 			console.log('error', err);
 		});
@@ -21,15 +21,16 @@ $(document).ready(function(){
 	$('.edit-form').submit(function(e){
 		e.preventDefault();
 		console.log('about to submit edit request');
+		console.log($(this).attr('action'), $(this).serialize())
 
-		$.ajax({
-			url: $(this).attr('action'),
-			method: 'PUT',
-			data: $(this).serialize()
-		}).done(function(res){
-			console.log('success', res);
-		}).fail(function(err){
-			console.log('error', err);
-		});
+		// $.ajax({
+		// 	url: $(this).attr('action'),
+		// 	method: 'PUT',
+		// 	data: $(this).serialize()
+		// }).done(function(res){
+		// 	console.log('success', res);
+		// }).fail(function(err){
+		// 	console.log('error', err);
+		// });
 	});
 });
