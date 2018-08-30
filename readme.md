@@ -28,6 +28,7 @@
 | ------ | ---------------- | -------------------- | -------------------------- |
 | GET | / | index.js | Home page |
 | GET | /profile | controllers/profile.js | Profile page (autherization required) |
+| GET | * | index.js | catch any other routes to error page|
 | GET | /auth/login | controllers/auth.js | Login form page |
 | POST | /auth/login | controllers/auth.js | Login submision; Redirect Profile |
 | GET | /auth/signup | controllers/auth.js | Signup form page |
@@ -37,3 +38,7 @@
 | GET | /callback/facebook | controllers/auth.js | handles response from facebook |
 | GET | /articles | controllers/articles.js | article list |
 | GET | /articles/:id | controllers/articles.js | shows article |
+| GET | /articles/:id/edit | controllers/articles.js | edit form page|
+| GET | /articles/new | controllers/articles.js | create story form page |
+| POST | /articles | controller/articles.js | post story |
+| GET | /profile/articles | controllers/profile.js | views user's stories |
