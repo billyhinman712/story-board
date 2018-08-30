@@ -36,6 +36,7 @@ app.use(function(req, res, next){
 app.use('/auth', require('./controllers/auth'));
 app.use('/profile', require('./controllers/profile'));
 app.use('/articles', require('./controllers/articles'));
+app.use('/comments', require('./controllers/comments'));
 
 //define routes
 app.get('/', function(req, res){
