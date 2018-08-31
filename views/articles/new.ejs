@@ -9,7 +9,7 @@
 			<% if(users){ %>
 				<% users.forEach(function(u){ %>
 				<option value="<%= u.id %>">
-					<%= u.name %> <%= u.lastname %>
+					<%= u.firstname %> <%= u.lastname %>
 				</option>
 				<% }); %>
 			<% } %>
@@ -22,7 +22,7 @@
 </div>
 	<div class="form-group">
 		<label for="tags">Tags:</label>
-		<input type="text" name="tags" class="form-control" placeholder="Tag topics! Seperate by commas!">
+		<input type="text" name="tag" class="form-control" placeholder="Tag topics! Seperate by commas!">
 	</div>
 	<input type="submit" value="Add Article">
 </form>

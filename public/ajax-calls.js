@@ -3,6 +3,21 @@ $(document).ready(function(){
 
     $('select').formSelect();
 
+    $("#generator").click(function(){
+
+		$.ajax({
+			url:"https://talaikis.com/api/quotes/random/",
+			method:"GET",
+		}).done(function(response){
+			console.log("success", response);
+			$("#quote").text("\"" + response.quote + "\"");
+			$("#title").text(response.author + " on " + response.cat);
+			$("#quote").css("font-style", "italic");
+		}).fail(function(err){
+			console.log("error", err);
+		});
+	});
+
     $('.delete-btn').click(function(e){
 		e.preventDefault();
 		var url = $(this).attr('href');

@@ -64,13 +64,39 @@ router.get('/:id/edit', function(req, res){
 });
 
 router.post('/', function(req, res){
-	console.log('BDY', req.body);
-	db.article.create(req.body).then(function(createdArticle){
-		res.redirect('/profile/articles');
-	}).catch(function(err){
-		console.log('errrrrr', err)
-		res.render('error');
-	});
+	if(req.body.userId !== 0){
+		console.log(req.body);
+		db.article.create(req.body).then(function(createdArticle){
+			//parse the tags if any
+			var tags = [];
+			if(req.body.tag){
+				tags = req.body.tag.split(',');
+			}
+
+			if(tags.length > 0){
+				async.forEach(tag, function(t, done){
+					//this code runs for each individual tag we add
+					db.tag.findOrCreate({
+						where: {name: t.trim()}
+					}).spread(function(newTag, wasCreated){
+						createdArticle.addTag(newTag).then(function(){;
+							done();//tells async, function iteration is done
+						});
+					});
+				}, function(){
+					//this code runs when forEach is done
+					res.redirect('/articles/' + createdArticle.id);
+				});
+			}else{
+			res.redirect('/articles/' + createdArticle.id);
+		}
+		}).catch(function(err){
+			console.log(err);
+			res.render('error');
+		});
+	}else{
+		res.redirect('/articles/new');
+	};
 });
 
 router.put('/', function(req, res){
