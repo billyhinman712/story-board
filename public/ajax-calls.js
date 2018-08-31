@@ -16,22 +16,22 @@ $(document).ready(function(){
 		}).fail(function(err){
 			console.log("error", err);
 		});
-	});
+	});//end of api call
 
     $('.delete-btn').click(function(e){
 		e.preventDefault();
 		var url = $(this).attr('href');
-
+		console.log("HREF: ", url);
 		$.ajax({
 			url: url,
 			method: 'DELETE'
 		}).done(function(res){
-			// console.log('success', res);
+			console.log('success', res);
 			window.location = '/profile/articles';
 		}).fail(function(err){
 			console.log('error', err);
 		});
-	});
+	});//end of delete ajax
 
 	$('.edit-form').submit(function(e){
 		e.preventDefault();

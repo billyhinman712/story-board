@@ -1,4 +1,5 @@
 //require needed modules
+var async = require('async');
 var express = require('express');
 var passport = require('../config/passportConfig');
 var db = require('../models');
@@ -74,7 +75,7 @@ router.post('/', function(req, res){
 			}
 
 			if(tags.length > 0){
-				async.forEach(tag, function(t, done){
+				async.forEach(tags, function(t, done){
 					//this code runs for each individual tag we add
 					db.tag.findOrCreate({
 						where: {name: t.trim()}
@@ -104,10 +105,12 @@ router.put('/', function(req, res){
 });
 
 router.delete('/:id', function(req, res){
+	console.log(req.params.id);
 	db.article.findOne({
 		where: {id: req.params.id},
 		include: [db.comment]
 	}).then(function(foundArticle){
+		console.log("FOUND ARTICLE:", foundArticle);
 		async.forEach(foundArticle.tags, function(a, done){
 			foundArticle.removeTag(a).then(function(){
 				done();
@@ -118,10 +121,12 @@ router.delete('/:id', function(req, res){
 			}).then(function(){
 				res.send('success');
 			}).catch(function(err){
+				console.log(">>>>>>>FAILING IN ARTICLE DESTROY catch")
 				res.status(500).send('oh noo!');
 			});
 		});
 	}).catch(function(err){
+		console.log("!!!!!!!FAILING IN ARTICLE findone catch")
 		res.status(500).send('oh noo!');
 	});
 })
