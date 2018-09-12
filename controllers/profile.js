@@ -13,10 +13,10 @@ router.get('/', loggedIn, function(req, res){
 	res.render('auth/profile/index');
 });
 
-router.get('/articles', function(req, res){
+router.get('/stories', function(req, res){
 	db.article.findAll().then(function(allArticles){
 		db.user.findAll().then(function(allUsers){
-			res.render('profile/list', {articles: allArticles, users: allUsers});
+			res.render('profile/list', {stories: allStories, users: allUsers});
 		});
 	}).catch(function(err){
 		console.log(err);

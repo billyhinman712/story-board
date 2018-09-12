@@ -5,7 +5,7 @@ var db = require('../models');
 router.post('/', function(req, res){
 	console.log('BDY', req.body);
 	db.comment.create(req.body).then(function(createdComment){
-		res.redirect('/articles/' + req.body.articleId);
+		res.redirect('/stories/' + req.body.storyId);
 	}).catch(function(err){
 		console.log('errrrrr', err)
 		res.render('error');
