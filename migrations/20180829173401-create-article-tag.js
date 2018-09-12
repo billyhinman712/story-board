@@ -1,14 +1,14 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('articleTags', {
+    return queryInterface.createTable('storyTags', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      articleId: {
+      storyId: {
         type: Sequelize.INTEGER
       },
       tagId: {
@@ -25,6 +25,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('articleTags');
+    return queryInterface.dropTable('storyTags');
   }
 };

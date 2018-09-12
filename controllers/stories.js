@@ -11,7 +11,7 @@ var db = require('../models');
 var router = express.Router();
 
 router.get('/', function(req, res){
-	db.article.findAll().then(function(allStories){
+	db.story.findAll().then(function(allStories){
 		db.user.findAll().then(function(allUsers){
 			res.render('stories/list', {stories: allStories, users: allUsers});
 		});
@@ -24,7 +24,7 @@ router.get('/', function(req, res){
 router.get('/new', function(req, res){
 	console.log(req.url);
 	db.user.findAll().then(function(allUsers){
-		res.render('articles/new', {users: allUsers});
+		res.render('stories/new', {users: allUsers});
 	}).catch(function(err){
 		console.log(err);
 		res.render('error');
@@ -32,12 +32,12 @@ router.get('/new', function(req, res){
 });
 
 router.get('/:id', function(req, res){
-	db.article.findOne({
+	db.story.findOne({
 		where: {id: req.params.id},
 		include: [db.user, db.comment, db.tag]
 	}).then(function(foundStory){
 		db.user.findAll().then(function(allUsers){
-			res.render('Stories/show', {story: foundStory, users: allUsers});
+			res.render('stories/show', {story: foundStory, users: allUsers});
 		}).catch(function(err){
 			console.log(err);
 			res.render('error');
@@ -49,7 +49,7 @@ router.get('/:id', function(req, res){
 });
 
 router.get('/:id/edit', function(req, res){
-	db.article.findOne({
+	db.story.findOne({
 		where: {id: req.params.id},
 	}).then(function(foundStory){
 		db.user.findAll().then(function(allUsers){
@@ -67,7 +67,7 @@ router.get('/:id/edit', function(req, res){
 router.post('/', function(req, res){
 	if(req.body.userId !== 0){
 		console.log(req.body);
-		db.article.create(req.body).then(function(createdArticle){
+		db.story.create(req.body).then(function(createdStory){
 			//parse the tags if any
 			var tags = [];
 			if(req.body.tag){
@@ -106,17 +106,17 @@ router.put('/', function(req, res){
 
 router.delete('/:id', function(req, res){
 	console.log(req.params.id);
-	db.article.findOne({
+	db.story.findOne({
 		where: {id: req.params.id},
 		include: [db.comment]
-	}).then(function(foundArticle){
+	}).then(function(foundStory){
 		console.log("FOUND Story:", foundStory);
 		async.forEach(foundStory.tags, function(a, done){
 			foundStory.removeTag(a).then(function(){
 				done();
 			});
 		}, function(){
-			db.article.destroy({
+			db.story.destroy({
 				where: {id: req.params.id}
 			}).then(function(){
 				res.send('success');

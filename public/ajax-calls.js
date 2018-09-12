@@ -27,7 +27,7 @@ $(document).ready(function(){
 			method: 'DELETE'
 		}).done(function(res){
 			console.log('success', res);
-			window.location = '/profile/articles';
+			window.location = '/profile/stories';
 		}).fail(function(err){
 			console.log('error', err);
 		});

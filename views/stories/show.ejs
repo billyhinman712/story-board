@@ -1,12 +1,9 @@
 <div class='row'>
 	<div class='col s4 light-green accent-3'>
-		<h5>Search tags</h5>
-		<input type='text' placeholder='tags'>
-		<input type="submit" value="Search" class="btn">
 		<hr>
 		<ul>
-		<% if(article.tags && article.tags.length > 0){ %>
-		<% article.tags.forEach(function(t){ %>
+		<% if(stories.tags && story.tags.length > 0){ %>
+		<% story.tags.forEach(function(t){ %>
 			<li>
 				#<%= t.name %>
 			</li>
@@ -18,18 +15,18 @@
 	</div>
 	<div class='col s8 cyan accent-1'>
 		<div class='container'>
-			<h3> <%= article.title %> </h3>
+			<h3> <%= story.title %> </h3>
 			<br>
-			<h4> <%= article.user.firstname %> <%= article.user.lastname %></h4>
+			<h4> <%= story.user.firstname %> <%= story.user.lastname %></h4>
 		</div>
 		<div class='container'>
-			<p> <%= article.content %> </p>
+			<p> <%= story.content %> </p>
 		</div>
 	</div>
 </div>
 <div class="purple accent-1">
 	<h3>Comments:</h3>
-	<% article.comments.forEach(function(c){ %>
+	<% story.comments.forEach(function(c){ %>
 		<div>
 			<%= c.content %>
 		</div>
@@ -57,7 +54,7 @@
 				<% } %>
 				</select>
 	</div>
-	<input type="hidden" name="articleId" value="<%= article.id %>">
+	<input type="hidden" name="storyId" value="<%= story.id %>">
 	<input type="submit" value="Give your 2 cents" class="btn btn-warning">
 	</form>
 </div>

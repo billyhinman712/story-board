@@ -36,7 +36,7 @@ app.use(function(req, res, next){
 //add controllers
 app.use('/auth', require('./controllers/auth'));
 app.use('/profile', require('./controllers/profile'));
-app.use('/articles', require('./controllers/articles'));
+app.use('/stories', require('./controllers/stories'));
 app.use('/comments', require('./controllers/comments'));
 
 //define routes

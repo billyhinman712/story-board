@@ -14,7 +14,7 @@ router.get('/', loggedIn, function(req, res){
 });
 
 router.get('/stories', function(req, res){
-	db.article.findAll().then(function(allArticles){
+	db.story.findAll().then(function(allStories){
 		db.user.findAll().then(function(allUsers){
 			res.render('profile/list', {stories: allStories, users: allUsers});
 		});

@@ -3,12 +3,12 @@
 	<br>
 	<hr>
 	<div class="container">
-		<% articles.forEach(function(a){ %>
-			<a href="/articles/<%= a.id %>">
-				<%= a.title %>
+		<% stories.forEach(function(s){ %>
+			<a href="/stories/<%= s.id %>">
+				<%= s.title %>
 			</a>
-			<a href="/articles/<%= a.id %>/edit" class="btn btn-warning edit-form">Edit story</a>
-			<a href="/articles/<%= a.id %>" class="btn delete-btn">Delete Story</a>
+			<a href="/stories/<%= s.id %>/edit" class="btn btn-warning edit-form">Edit story</a>
+			<a href="/stories/<%= s.id %>" class="btn delete-btn">Delete Story</a>
 			<br>
 		<% }); %>
 	</div>

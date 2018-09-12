@@ -1,8 +1,8 @@
 <h1>Edit Story Submision Form</h1>
 
 
-<form method="PUT" action="/articles">
-	Title: <input type="text" name="title" class="form-group" value="<%= article.title %>" required>
+<form method="PUT" action="/stories">
+	Title: <input type="text" name="title" class="form-group" value="<%= story.title %>" required>
 	<div class="input-field col s12">
 		<select name="userId">
 			<option value="" disabled selected>Choose Your name below</option>
@@ -18,7 +18,7 @@
 	</div>
 	<div>
 	<label> content: </label>
-	<input type="text" name="content" class="form-group" value="<%= article.content %>" required>
+	<input type="text" name="content" class="form-group" value="<%= story.content %>" required>
 </div>
 	<div class="form-group">
 		<label for="tags">Tags:</label>

@@ -42,3 +42,6 @@
 | GET | /articles/new | controllers/articles.js | create story form page |
 | POST | /articles | controller/articles.js | post story |
 | GET | /profile/articles | controllers/profile.js | views user's stories |
+
+created app that allowes users to create a account to submit stories for others to view.
+they are able to delete and edit their stories.
